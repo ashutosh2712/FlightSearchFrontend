@@ -1,0 +1,41 @@
+{
+    "flights": [
+      {
+        "flight_number": "AI101",
+        "airline": "Air India",
+        "departure_airport": "DEL",
+        "departure_city": "New Delhi",
+        "departure_time": "2024-04-15T08:00:00",
+        "arrival_airport": "BOM",
+        "arrival_city": "Mumbai",
+        "arrival_time": "2024-04-15T10:30:00",
+        "price": 250.00,
+        "available_seats": 50
+      },
+      {
+        "flight_number": "BA203",
+        "airline": "British Airways",
+        "departure_airport": "LHR",
+        "departure_city": "London",
+        "departure_time": "2024-04-15T10:30:00",
+        "arrival_airport": "JFK",
+        "arrival_city": "New York",
+        "arrival_time": "2024-04-15T15:00:00",
+        "price": 500.00,
+        "available_seats": 30
+      },
+      {
+        "flight_number": "EK501",
+        "airline": "Emirates",
+        "departure_airport": "DXB",
+        "departure_city": "Dubai",
+        "departure_time": "2024-04-15T12:00:00",
+        "arrival_airport": "LAX",
+        "arrival_city": "Los Angeles",
+        "arrival_time": "2024-04-15T18:00:00",
+        "price": 800.00,
+        "available_seats": 20
+      }
+    ]
+  }
+  
