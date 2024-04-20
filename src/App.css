@@ -1,0 +1,129 @@
+*{
+  margin : 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+.navContainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(248, 149, 19);
+  color: azure;
+  font-weight: bold;
+  padding: 0.5rem;
+  
+}
+
+.navLeftItems{
+display: flex;
+gap: 6rem;
+}
+
+.navRightItems{
+ display: flex;
+ margin-right: 1rem;
+}
+
+/* Flights Container */
+
+
+.flightContainer{
+  display: flex;
+  flex-direction: column;
+}
+.filterContainer{
+  display: flex;
+  flex-direction: column;
+  margin: 4rem 8rem 8rem 8rem;
+  
+  box-shadow: 0 0 1rem rgb(55, 216, 216);
+  background: rgb(190, 249, 249);
+  padding: 3rem;
+  border-radius: 1rem;
+}
+.flightsIcon{
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+
+.cityFilters{
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tripFilters{
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.priceFilters{
+ display: flex;
+ flex-direction: column;
+ margin-bottom: 1rem;
+}
+
+.cityInput{
+  border: 1px solid lightgray;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+.cityInput:focus {
+  box-shadow: 0 0 0 2px dodgerblue;
+}
+.formContainerInput{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.minMaxFilter{
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.minFilter,.maxFilter{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.searchButton{
+  width: max-content;
+  height: max-content;
+  padding: 1rem;
+  border-radius: 2rem;
+  background: dodgerblue;
+  color: #fff;
+}
+
+.searchButton:hover{
+  cursor: pointer;
+  padding: 1.015rem;
+  background: green;
+  font-weight: bold;
+}
+
+/* Result Container */
+
+.resultContainer{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gold;
+  margin: 0 8rem 8rem 8rem;
+  align-items: center;
+}
+
+.flightResults{
+  display: flex;
+  justify-content: center;
+}

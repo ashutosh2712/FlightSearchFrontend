@@ -42,84 +42,94 @@ const FlightSearch = ({ flights }) => {
 
   return (
     <div className="flightContainer">
-      <h1>FlightSearch</h1>
-      <div className="formContainer">
-        <label htmlFor="departureCity">Departure City:</label>
-        <input
-          type="text"
-          id="departureCity"
-          value={departureCity}
-          onChange={(e) => setDepartureCity(e.target.value)}
-        />
+      <div className="filterContainer">
+        <div className="tripFilters">
+          <div className="formContainerTrip">
+            <label>
+              <input
+                type="radio"
+                name="oneWay"
+                value="oneWay"
+                id="oneWay"
+                checked={tripType === "oneWay"}
+                onChange={() => setTripType("oneWay")}
+              />
+              One Way
+            </label>
+          </div>
+          <div className="formContainerTrip">
+            <label>
+              <input
+                type="radio"
+                name="roundTrip"
+                value="roundTrip"
+                id="roundTrip"
+                checked={tripType === "roundTrip"}
+                onChange={() => setTripType("roundTrip")}
+              />
+              Round Trip
+            </label>
+          </div>
+        </div>
+        <div className="cityFilters">
+          <div className="formContainerInput">
+            <label htmlFor="departureCity">Departure City:</label>
+            <input
+              type="text"
+              id="departureCity"
+              value={departureCity}
+              onChange={(e) => setDepartureCity(e.target.value)}
+              className="cityInput"
+            />
+          </div>
+          <div className="formContainerInput">
+            <label htmlFor="arrivalCity">Arrival City:</label>
+            <input
+              type="text"
+              id="arrivalCity"
+              value={arrivalCity}
+              onChange={(e) => setArrivalCity(e.target.value)}
+              className="cityInput"
+            />
+          </div>
+        </div>
+
+        <div className="priceFilters">
+          <div className="minMaxFilter">
+            <div className="minFilter">
+              <label htmlFor="minPrice">Min Price:</label>
+              <input
+                type="range"
+                id="minPrice"
+                min="0"
+                max="1000"
+                value={minPrice}
+                onChange={(e) => setMinPrice(parseInt(e.target.value))}
+              />
+              <p>${minPrice}</p>
+            </div>
+            <div className="maxFilter">
+              <label htmlFor="maxPrice">Max Price:</label>
+              <input
+                type="range"
+                id="maxPrice"
+                min="0"
+                max="1000"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(parseInt(e.target.value))}
+              />
+              <p>${maxPrice}</p>
+            </div>
+          </div>
+          <p>
+            Price Range: ${minPrice} - ${maxPrice}
+          </p>
+        </div>
+        <button onClick={handleSearch} className="searchButton">
+          Search
+        </button>
       </div>
 
-      <div className="formContainer">
-        <label htmlFor="arrivalCity">Arrival City:</label>
-        <input
-          type="text"
-          id="arrivalCity"
-          value={arrivalCity}
-          onChange={(e) => setArrivalCity(e.target.value)}
-        />
-      </div>
-
-      <div className="formContainer">
-        <label>
-          <input
-            type="radio"
-            name="oneWay"
-            value="oneWay"
-            id="oneWay"
-            checked={tripType === "oneWay"}
-            onChange={() => setTripType("oneWay")}
-          />
-          One Way
-        </label>
-      </div>
-      <div className="formContainer">
-        <label>
-          <input
-            type="radio"
-            name="roundTrip"
-            value="roundTrip"
-            id="roundTrip"
-            checked={tripType === "roundTrip"}
-            onChange={() => setTripType("roundTrip")}
-          />
-          Round Trip
-        </label>
-      </div>
-
-      <div>
-        <label htmlFor="minPrice">Min Price:</label>
-        <input
-          type="range"
-          id="minPrice"
-          min="0"
-          max="1000"
-          value={minPrice}
-          onChange={(e) => setMinPrice(parseInt(e.target.value))}
-        />
-        {minPrice}
-      </div>
-      <div>
-        <label htmlFor="maxPrice">Max Price:</label>
-        <input
-          type="range"
-          id="maxPrice"
-          min="0"
-          max="1000"
-          value={maxPrice}
-          onChange={(e) => setMaxPrice(parseInt(e.target.value))}
-        />
-        {maxPrice}
-      </div>
-
-      <p>
-        Price Range: ${minPrice} - ${maxPrice}
-      </p>
-
-      <button onClick={handleSearch}>Search</button>
       <div className="resultContainer">
         <h3>SearchResults</h3>
         {searchResults ? (
