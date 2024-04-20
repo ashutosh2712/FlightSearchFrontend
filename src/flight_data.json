@@ -35,6 +35,30 @@
         "arrival_time": "2024-04-15T18:00:00",
         "price": 800.00,
         "available_seats": 20
+      },
+      {
+        "flight_number": "BC203",
+        "airline": "Hamingway",
+        "departure_airport": "LHR",
+        "departure_city": "London",
+        "departure_time": "2024-04-15T11:30:00",
+        "arrival_airport": "JFK",
+        "arrival_city": "New York",
+        "arrival_time": "2024-04-15T16:00:00",
+        "price": 550.00,
+        "available_seats": 12
+      },
+      {
+        "flight_number": "LC203",
+        "airline": "Hamingway",
+        "departure_airport": "LHR",
+        "departure_city": "London",
+        "departure_time": "2024-04-15T11:30:00",
+        "arrival_airport": "JFK",
+        "arrival_city": "New York",
+        "arrival_time": "2024-04-15T16:00:00",
+        "price": 400.00,
+        "available_seats": 50
       }
     ]
   }
