@@ -9,7 +9,7 @@ const Navbar = () => {
     <div className="navContainer">
       <h1>FlightSearch</h1>
       <div className="navLeftItems">
-        <div className="flightsIcon">
+        <div className="flightsIcon fligthActive">
           <img src={Flight} alt="plane" />
           <p>Flights</p>
         </div>

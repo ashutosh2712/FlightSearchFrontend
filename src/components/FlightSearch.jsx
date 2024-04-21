@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Flight from "../assets/airline.png";
 const FlightSearch = ({ flights }) => {
   const [departureCity, setDepartureCity] = useState("");
   const [arrivalCity, setArrivalCity] = useState("");
@@ -8,6 +8,23 @@ const FlightSearch = ({ flights }) => {
   const [maxPrice, setMaxPrice] = useState(10000);
 
   const [searchResults, setSearchResults] = useState([]);
+
+  // Function to calculate and format the duration
+  const calculateDuration = (departureTime, arrivalTime) => {
+    // Parse departure and arrival times into Date objects
+    const departure = new Date(departureTime);
+    const arrival = new Date(arrivalTime);
+
+    // Calculate the difference in milliseconds
+    const durationMs = arrival - departure;
+
+    // Convert milliseconds to hours and minutes
+    const hours = Math.floor(durationMs / (1000 * 60 * 60));
+    const minutes = Math.floor((durationMs % (1000 * 60 * 60)) / (1000 * 60));
+
+    // Format the duration
+    return `${hours}h${minutes}m`;
+  };
 
   const handleSearch = () => {
     let results = [];
@@ -131,20 +148,91 @@ const FlightSearch = ({ flights }) => {
       </div>
 
       <div className="resultContainer">
-        <h3>SearchResults</h3>
+        <h2>SearchResults</h2>
         {searchResults ? (
           <div className="flightResults">
             {tripType === "oneWay" ? (
               searchResults.length > 0 ? (
-                <ul>
-                  {searchResults.map((flight) => (
-                    <li key={flight.flight_number}>
-                      {flight.airline} - {flight.flight_number} :{" "}
-                      {flight.departure_city} to {flight.arrival_city} (
-                      {flight.departure_time} - {flight.arrival_time})
-                    </li>
-                  ))}
-                </ul>
+                <table className="htmlTable">
+                  <thead className="htmlTableHead">
+                    <th className="htmlTableTh">DERPERTURE</th>
+                    <th className="htmlTableTh">DURATION</th>
+                    <th className="htmlTableTh">ARRIVAL</th>
+                    <th className="htmlTableTh">PRICE</th>
+                    <th className="htmlTableTh"></th>
+                  </thead>
+                  <tbody>
+                    {searchResults.map((flight) => (
+                      <tr key={flight.flight_number} className="htmlTableTr">
+                        <td className="htmlTableTd">
+                          <div className="airlineHeader">
+                            <div className="airline">
+                              <img src={Flight} alt="" />
+                              {flight.airline} - {flight.flight_number}
+                            </div>
+                            <div className="airportDetails">
+                              <p>
+                                <b>{flight.departure_airport} </b>
+                                {flight.departure_city}{" "}
+                              </p>
+                              <h3>{flight.departure_time.substring(11, 16)}</h3>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="htmlTableTd">
+                          <div className="airportDetails">
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <b>
+                              {calculateDuration(
+                                flight.departure_time,
+                                flight.arrival_time
+                              )}
+                            </b>
+                          </div>
+                        </td>
+                        <td className="htmlTableTd">
+                          <div>&nbsp;</div>
+                          <div>&nbsp;</div>
+                          <div>&nbsp;</div>
+                          <div className="airportDetails">
+                            <p>
+                              <b>{flight.arrival_airport} </b>
+                              {flight.arrival_city}{" "}
+                            </p>
+                            <h3>{flight.arrival_time.substring(11, 16)}</h3>
+                          </div>
+                        </td>
+                        <td className="htmlTableTd">
+                          <div className="airportDetails">
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <b>$ {flight.price}</b>
+                          </div>
+                        </td>
+                        <td className="htmlTableTd">
+                          <div className="airportDetails">
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <button className="bookButton">Book Now</button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               ) : (
                 <p>No one-way flights found.</p>
               )
@@ -152,29 +240,176 @@ const FlightSearch = ({ flights }) => {
               <div className="roundTripFlights">
                 <h4>Outbound Flights</h4>
                 {searchResults.outbound && searchResults.outbound.length > 0 ? (
-                  <ul>
-                    {searchResults.outbound.map((flight) => (
-                      <li key={flight.flight_number}>
-                        {flight.airline} - {flight.flight_number} :{" "}
-                        {flight.departure_city} to {flight.arrival_city} (
-                        {flight.departure_time} - {flight.arrival_time})
-                      </li>
-                    ))}
-                  </ul>
+                  <table className="htmlTable">
+                    <thead className="htmlTableHead">
+                      <th className="htmlTableTh">DERPERTURE</th>
+                      <th className="htmlTableTh">DURATION</th>
+                      <th className="htmlTableTh">ARRIVAL</th>
+                      <th className="htmlTableTh">PRICE</th>
+                      <th className="htmlTableTh"></th>
+                    </thead>
+                    <tbody>
+                      {searchResults.outbound.map((flight) => (
+                        <tr key={flight.flight_number} className="htmlTableTr">
+                          <td className="htmlTableTd">
+                            <div className="airlineHeader">
+                              <div className="airline">
+                                <img src={Flight} alt="" />
+                                {flight.airline} - {flight.flight_number}
+                              </div>
+                              <div className="airportDetails">
+                                <p>
+                                  <b>{flight.departure_airport} </b>
+                                  {flight.departure_city}{" "}
+                                </p>
+                                <h3>
+                                  {flight.departure_time.substring(11, 16)}
+                                </h3>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="htmlTableTd">
+                            <div className="airportDetails">
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <b>
+                                {calculateDuration(
+                                  flight.departure_time,
+                                  flight.arrival_time
+                                )}
+                              </b>
+                            </div>
+                          </td>
+                          <td className="htmlTableTd">
+                            <div>&nbsp;</div>
+                            <div>&nbsp;</div>
+                            <div>&nbsp;</div>
+                            <div className="airportDetails">
+                              <p>
+                                <b>{flight.arrival_airport} </b>
+                                {flight.arrival_city}{" "}
+                              </p>
+                              <h3>{flight.arrival_time.substring(11, 16)}</h3>
+                            </div>
+                          </td>
+                          <td className="htmlTableTd">
+                            <div className="airportDetails">
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <b>$ {flight.price}</b>
+                            </div>
+                          </td>
+                          <td className="htmlTableTd">
+                            <div className="airportDetails">
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <button className="bookButton">Book Now</button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 ) : (
                   <p>No outbound flights found.</p>
                 )}
                 <h4>Return Flights</h4>
+
                 {searchResults.return && searchResults.return.length > 0 ? (
-                  <ul>
-                    {searchResults.return.map((flight) => (
-                      <li key={flight.flight_number}>
-                        {flight.airline} - {flight.flight_number} :{" "}
-                        {flight.departure_city} to {flight.arrival_city} (
-                        {flight.departure_time} - {flight.arrival_time})
-                      </li>
-                    ))}
-                  </ul>
+                  <table className="htmlTable">
+                    <thead className="htmlTableHead">
+                      <th className="htmlTableTh">DERPERTURE</th>
+                      <th className="htmlTableTh">DURATION</th>
+                      <th className="htmlTableTh">ARRIVAL</th>
+                      <th className="htmlTableTh">PRICE</th>
+                      <th className="htmlTableTh"></th>
+                    </thead>
+                    <tbody>
+                      {searchResults.return.map((flight) => (
+                        <tr key={flight.flight_number} className="htmlTableTr">
+                          <td className="htmlTableTd">
+                            <div className="airlineHeader">
+                              <div className="airline">
+                                <img src={Flight} alt="" />
+                                {flight.airline} - {flight.flight_number}
+                              </div>
+                              <div className="airportDetails">
+                                <p>
+                                  <b>{flight.departure_airport} </b>
+                                  {flight.departure_city}{" "}
+                                </p>
+                                <h3>
+                                  {flight.departure_time.substring(11, 16)}
+                                </h3>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="htmlTableTd">
+                            <div className="airportDetails">
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <b>
+                                {calculateDuration(
+                                  flight.departure_time,
+                                  flight.arrival_time
+                                )}
+                              </b>
+                            </div>
+                          </td>
+                          <td className="htmlTableTd">
+                            <div>&nbsp;</div>
+                            <div>&nbsp;</div>
+                            <div>&nbsp;</div>
+                            <div className="airportDetails">
+                              <p>
+                                <b>{flight.arrival_airport} </b>
+                                {flight.arrival_city}{" "}
+                              </p>
+                              <h3>{flight.arrival_time.substring(11, 16)}</h3>
+                            </div>
+                          </td>
+                          <td className="htmlTableTd">
+                            <div className="airportDetails">
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <b>$ {flight.price}</b>
+                            </div>
+                          </td>
+                          <td className="htmlTableTd">
+                            <div className="airportDetails">
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <p></p>
+                              <button className="bookButton">Book Now</button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 ) : (
                   <p>No return flights found.</p>
                 )}

@@ -44,7 +44,7 @@
         "departure_time": "2024-04-15T11:30:00",
         "arrival_airport": "JFK",
         "arrival_city": "New York",
-        "arrival_time": "2024-04-15T16:00:00",
+        "arrival_time": "2024-04-15T22:00:00",
         "price": 550.00,
         "available_seats": 12
       },
@@ -59,6 +59,18 @@
         "arrival_time": "2024-04-15T16:00:00",
         "price": 400.00,
         "available_seats": 50
+      },
+      {
+        "flight_number": "LD204",
+        "airline": "Hamingway",
+        "departure_airport": "JFK",
+        "departure_city": "New York",
+        "departure_time": "2024-04-15T17:30:00",
+        "arrival_airport": "LHR",
+        "arrival_city": "London",
+        "arrival_time": "2024-04-15T20:00:00",
+        "price": 600.00,
+        "available_seats": 45
       }
     ]
   }
