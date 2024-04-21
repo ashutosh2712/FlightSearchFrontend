@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 import Flight from "../assets/airline.png";
+
 const FlightSearch = ({ flights }) => {
   const [departureCity, setDepartureCity] = useState("");
   const [arrivalCity, setArrivalCity] = useState("");
@@ -91,23 +93,36 @@ const FlightSearch = ({ flights }) => {
         <div className="cityFilters">
           <div className="formContainerInput">
             <label htmlFor="departureCity">Departure City:</label>
-            <input
-              type="text"
+            <select
               id="departureCity"
               value={departureCity}
               onChange={(e) => setDepartureCity(e.target.value)}
               className="cityInput"
-            />
+            >
+              <option value="">Select City</option>
+              {flights.map((flight, index) => (
+                <option key={index} value={flight.departure_city}>
+                  {flight.departure_city}
+                </option>
+              ))}
+            </select>
           </div>
+
           <div className="formContainerInput">
             <label htmlFor="arrivalCity">Arrival City:</label>
-            <input
-              type="text"
+            <select
               id="arrivalCity"
               value={arrivalCity}
               onChange={(e) => setArrivalCity(e.target.value)}
               className="cityInput"
-            />
+            >
+              <option value="">Select City</option>
+              {flights.map((flight, index) => (
+                <option key={index} value={flight.arrival_city}>
+                  {flight.arrival_city}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
@@ -234,7 +249,7 @@ const FlightSearch = ({ flights }) => {
                   </tbody>
                 </table>
               ) : (
-                <p>No one-way flights found.</p>
+                <p style={{ color: "red" }}>No one-way flights found.</p>
               )
             ) : (
               <div className="roundTripFlights">
@@ -323,7 +338,7 @@ const FlightSearch = ({ flights }) => {
                     </tbody>
                   </table>
                 ) : (
-                  <p>No outbound flights found.</p>
+                  <p style={{ color: "red" }}>No outbound flights found.</p>
                 )}
                 <h4>Return Flights</h4>
 
@@ -411,7 +426,7 @@ const FlightSearch = ({ flights }) => {
                     </tbody>
                   </table>
                 ) : (
-                  <p>No return flights found.</p>
+                  <p style={{ color: "red" }}>No return flights found.</p>
                 )}
               </div>
             )}
