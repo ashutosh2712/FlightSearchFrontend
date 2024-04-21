@@ -210,3 +210,67 @@ gap: 6rem;
   background: #fff;
 }
 
+/* ================ MEDIA QUERIES(TABLET) ========== */
+@media screen and (max-width:1024px) {
+  .filterContainer{
+    
+    align-items: center;
+  }
+  .navLeftItems{
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+  .cityFilters{
+    flex-direction: column;
+  }
+}
+
+/* ================ MEDIA QUERIES(MOBILE) ========== */
+@media screen and (max-width:600px) {
+    .navContainer{
+      flex-direction: column;
+      width: 100vh;
+    }
+    .navLeftItems{
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+    .navLeftItems,.navRightItems{
+      flex-direction: column;
+      font-size: 1.5rem;
+    }
+    
+    .filterContainer{
+      width: fit-content;
+      margin: 4rem;
+      align-items: center;
+    }
+    .tripFilters{
+      flex-direction: column;
+    }
+    .cityFilters{
+      flex-direction: column;
+    }
+    .searchButton{
+      padding: 2rem;
+      font-size: 1.5rem;
+    }
+
+    .searchButton:hover{
+      
+      padding: 2.01rem;
+      
+    }
+    .resultContainer{
+      width: 100vh;
+      margin: 0;
+    }
+
+    .htmlTable{
+      
+      width: fit-content;
+      margin-top: 1rem;
+    }
+
+    
+}
